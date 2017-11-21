@@ -36,12 +36,15 @@
     
 }
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
+    [super viewWillAppear:animated];    
     // 二维码扫描
     [self setupScanningQRCode];
 }
-
+// 移除定时器
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.scanningView removeTimer];
+}
 
 #pragma mark - - - 二维码扫描
 - (void)setupScanningQRCode {
@@ -107,11 +110,7 @@
 }
 
 
-// 移除定时器
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.scanningView removeTimer];
-}
+
 
 
 
